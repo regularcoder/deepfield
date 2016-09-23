@@ -1,0 +1,40 @@
+<apex:page controller="DeepFieldController">
+    <apex:form id="form">
+		<apex:pageBlock >
+			<apex:pageBlockSection columns="1">
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel >Objects</apex:outputLabel>
+					<apex:selectList size="1" value="{!currentobject}">
+						<apex:selectOptions value="{!objects}"/>
+						<apex:actionSupport event="onchange" reRender="form"/>
+					</apex:selectList>
+				</apex:pageBlockSectionItem>
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel >Field</apex:outputLabel>
+					<apex:selectList size="1" value="{!currentfield}">
+						<apex:selectOptions value="{!fields}"/>
+						<apex:actionSupport event="onchange"  reRender="form"/>
+					</apex:selectList>
+				</apex:pageBlockSectionItem>
+			</apex:pageBlockSection>
+            <apex:pageBlockSection columns="1">
+                <apex:pageBlockSectionItem >
+					<apex:outputLabel >Page layout(s)</apex:outputLabel>
+                    <apex:repeat value="{!LayoutUsage}" var="layoutLine">
+                    	<apex:outputText value="{!layoutLine}" /><br />
+                    </apex:repeat>	
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+					<apex:outputLabel >Formula field(s)</apex:outputLabel>
+                	<apex:outputText >{!FormulaFieldUsage}</apex:outputText>		
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+					<apex:outputLabel >Apex class(es)</apex:outputLabel>
+                    <apex:repeat value="{!ClassUsage}" var="classLine">
+                    	<apex:outputText value="{!classLine}" /><br />
+                    </apex:repeat>	
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>  
+		</apex:pageBlock>
+	</apex:form>    
+</apex:page>
